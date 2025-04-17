@@ -15,11 +15,9 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.Date;
-import java.util.regex.Pattern;
 import java.util.UUID;
 import java.util.List;
 import java.util.stream.Collectors;
-import jakarta.validation.ValidationException;
 import com.example.demo.entity.Phone;
 
 @Service
@@ -88,6 +86,7 @@ public class UserServiceImpl implements UserService {
                     .countrycode(p.getCountrycode())
                     .build())
                 .collect(Collectors.toList()));
+        existing.getPhones().forEach(phone -> phone.setUser(existing));
         existing.setModified(LocalDateTime.now());
         existing.setLastLogin(LocalDateTime.now());
         User updated = userRepository.save(existing);

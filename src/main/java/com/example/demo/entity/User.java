@@ -28,6 +28,6 @@ public class User {
     @Column(nullable = false)
     private String token;
     private Boolean isActive;
-    @OneToMany(cascade= CascadeType.ALL, orphanRemoval=true)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Phone> phones;
 }

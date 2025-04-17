@@ -13,7 +13,7 @@ import java.util.Map;
 /**
  * Manejador global de excepciones para la API RESTful.
  */
-@RestControllerAdvice
+@RestControllerAdvice(basePackages = "com.example.demo.controller")
 public class ApiExceptionHandler {
 
     /**
