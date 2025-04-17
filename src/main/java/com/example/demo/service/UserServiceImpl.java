@@ -2,10 +2,11 @@ package com.example.demo.service;
 
 import com.example.demo.dto.UserRequestDTO;
 import com.example.demo.dto.UserResponseDTO;
+import com.example.demo.entity.Phone;
 import com.example.demo.entity.User;
 import com.example.demo.exception.DuplicateEmailException;
-import com.example.demo.mapper.UserMapper;
 import com.example.demo.mapper.PhoneMapper;
+import com.example.demo.mapper.UserMapper;
 import com.example.demo.repository.UserRepository;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -17,14 +18,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import javax.crypto.SecretKey;
 import java.time.LocalDateTime;
 import java.util.Date;
-import java.util.UUID;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
-import com.example.demo.entity.Phone;
-
-import javax.crypto.SecretKey;
 
 @Slf4j
 @Service

@@ -1,7 +1,6 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
-import com.example.demo.entity.User;
 import lombok.*;
 
 @Entity

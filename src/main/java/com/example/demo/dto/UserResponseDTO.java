@@ -1,14 +1,14 @@
 package com.example.demo.dto;
 
-import java.time.LocalDateTime;
-import java.util.List;
-import java.util.UUID;
-
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
-import io.swagger.v3.oas.annotations.media.Schema;
+
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.UUID;
 
 @Schema(description = "DTO de respuesta devuelto al crear un usuario")
 @Data

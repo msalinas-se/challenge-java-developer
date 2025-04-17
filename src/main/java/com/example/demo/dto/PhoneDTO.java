@@ -1,10 +1,10 @@
 package com.example.demo.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
-import io.swagger.v3.oas.annotations.media.Schema;
 
 @Schema(description = "Información de un teléfono del usuario")
 @Data
