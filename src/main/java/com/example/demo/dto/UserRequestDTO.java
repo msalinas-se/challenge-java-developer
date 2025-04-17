@@ -1,8 +1,8 @@
 package com.example.demo.dto;
 
+import com.example.demo.configuration.ConfigurablePattern;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -21,11 +21,11 @@ public class UserRequestDTO {
     private String name;
 
     @Schema(description = "Correo electrónico del usuario", example =  "juan@rodriguez.org", required = true)
-    @Pattern(regexp = "[a-z0-9]+@[a-z0-9]+.[a-z]{2,3}", message = "El formato de correo es inválido")
+    @ConfigurablePattern(property = "app.validation.email-regex", message = "El formato de correo es inválido")
     private String email;
 
     @Schema(description = "Contraseña del usuario", example = "hunter2", required = true)
-    @Pattern(regexp = "[A-Za-z0-9]+", message = "El formato de contraseña es inválido")
+    @ConfigurablePattern(property = "app.validation.password-regex", message = "El formato de contraseña es inválido")
     private String password;
 
     @Schema(description = "Listado de teléfonos asociados al usuario")
