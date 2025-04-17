@@ -21,10 +21,12 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import java.util.UUID;
+import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("/api/users")
 @Tag(name = "Users", description = "Operaciones de gestión de usuarios")
+@Slf4j
 public class UserController {
     private final UserService userService;
 
@@ -42,7 +44,8 @@ public class UserController {
             }
     )
     @GetMapping("/{id}")
-    public ResponseEntity<UserResponseDTO> getUser(@Parameter(description = "UUID del usuario", required = true) @PathVariable UUID id) {
+    public ResponseEntity<UserResponseDTO> getUser(@Parameter(description = "UUID del usuario", required = true) @PathVariable("id") UUID id) {
+        log.info("GET /api/users/{} called", id);
         UserResponseDTO user = userService.getUser(id);
         return ResponseEntity.ok(user);
     }
@@ -58,6 +61,7 @@ public class UserController {
     )
     @PostMapping
     public ResponseEntity<UserResponseDTO> registerUser(@Valid @RequestBody UserRequestDTO userRequestDTO) {
+        log.info("POST /api/users called with name={} email={}", userRequestDTO.getName(), userRequestDTO.getEmail());
         UserResponseDTO userResponseDTO = userService.createUser(userRequestDTO);
         return ResponseEntity
                 .status(HttpStatus.CREATED)
@@ -76,8 +80,9 @@ public class UserController {
     )
     @PutMapping("/{id}")
     public ResponseEntity<UserResponseDTO> updateUser(
-            @Parameter(description = "UUID del usuario", required = true) @PathVariable UUID id,
+            @Parameter(description = "UUID del usuario", required = true) @PathVariable("id") UUID id,
             @Valid @RequestBody UserRequestDTO userRequestDTO) {
+        log.info("PUT /api/users/{} called with update data name={} email={}", id, userRequestDTO.getName(), userRequestDTO.getEmail());
         UserResponseDTO updated = userService.updateUser(id, userRequestDTO);
         return ResponseEntity.ok(updated);
     }
@@ -90,7 +95,8 @@ public class UserController {
         }
     )
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUser(@Parameter(description = "UUID del usuario", required = true) @PathVariable UUID id) {
+    public ResponseEntity<Void> deleteUser(@Parameter(description = "UUID del usuario", required = true) @PathVariable("id") UUID id) {
+        log.info("DELETE /api/users/{} called", id);
         userService.deleteUser(id);
         return ResponseEntity.noContent().build();
     }
