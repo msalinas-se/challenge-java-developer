@@ -29,7 +29,6 @@ class UserMapperTest {
     @Test
     @DisplayName("toEntity debe mapear campos correctamente usando mocks de PhoneDTO")
     void toEntity_mappingWithMockPhoneDTO() {
-        // Crear mock de PhoneDTO
         PhoneDTO phoneDtoMock = Mockito.mock(PhoneDTO.class);
         Mockito.when(phoneDtoMock.getNumber()).thenReturn("9999");
         Mockito.when(phoneDtoMock.getCitycode()).thenReturn("2");
