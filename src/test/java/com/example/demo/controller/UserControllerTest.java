@@ -5,7 +5,6 @@ import com.example.demo.dto.UserRequestDTO;
 import com.example.demo.dto.UserResponseDTO;
 import com.example.demo.service.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -28,7 +27,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(controllers = UserController.class)
-@Disabled("Ignorando pruebas temporalmente")
 class UserControllerTest {
 
     @Autowired
@@ -57,7 +55,7 @@ class UserControllerTest {
         return UserRequestDTO.builder()
                 .name("Juan Rodriguez")
                 .email("juan@rodriguez.org")
-                .password("Hunter123!")
+                .password("Hunter123")
                 .phones(List.of(new PhoneDTO("1234567", "1", "57")))
                 .build();
     }
